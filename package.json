@@ -3,8 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack",
-    "start": "webpack-dev-server"
+    "clean": "rimraf src/js",
+    "start": "webpack-dev-server",
+    "build:webpack": "cross-env NODE_ENV=production webpack",
+    "build": "npm run clean && npm run build:webpack"
   },
   "license": "ISC",
   "dependencies": {
@@ -34,6 +36,7 @@
     "redux-promise": "^0.5.3",
     "redux-promise-middleware": "^3.3.0",
     "redux-thunk": "^2.1.0",
+    "rimraf": "^2.5.3",
     "sass-loader": "^4.0.0",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.1",
