@@ -3,11 +3,20 @@ import React from 'react';
 import ReactDOM from "react-dom";
 import {Provider} from 'react-redux';
 import {createStore, applyMiddleware} from 'redux';
-import allReducers from './reducers';
-import App from './components/App';
+import thunk from 'redux-thunk';
+import createLogger from 'redux-logger';
+// import promise from 'redux-promise';
+//add gaoq
+import promise from 'redux-promise-middleware';
+import axios from 'axios';
 
+import allReducers from './reducers';
+import App from './components/app';
+
+const logger = createLogger();
 const store = createStore(
-    allReducers
+    allReducers,
+    applyMiddleware(promise(), thunk, logger)
 );
 
 ReactDOM.render(
